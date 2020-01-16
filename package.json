@@ -1,0 +1,31 @@
+{
+  "name": "import-sort-style-module-and-prefix",
+  "version": "0.1.0",
+  "main": "lib/index.js",
+  "homepage": "https://github.com/import-sort-style-module-and-prefix",
+  "bugs": "https://github.com/ronyclau/import-sort-style-module-and-prefix/issues",
+  "repository": {
+    "url": "https://github.com/ronyclau/import-sort-style-module-and-prefix",
+    "type": "git"
+  },
+  "author": "Ron Lau <ron@ronlau.hk>",
+  "license": "MIT",
+  "devDependencies": {
+    "import-sort-parser": "^6.0.0",
+    "import-sort-style": "^6.0.0",
+    "prettier": "^1.19.1",
+    "typescript": "^3.7.4"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json"
+  },
+  "files": [
+    "/lib"
+  ],
+  "dependencies": {
+    "cosmiconfig": "^6.0.0"
+  },
+  "engines": {
+    "node": ">=8.2.0"
+  }
+}
