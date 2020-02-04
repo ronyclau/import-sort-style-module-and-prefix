@@ -6,12 +6,12 @@ An [import sort](https://github.com/renke/import-sort) style based on [`import-s
 
 Install this package through `npm`:
 ```bash
-npm install --dev import-sort-style-module-and-prefix
+npm install --save-dev import-sort-style-module-and-prefix
 ```
 
 or `yarn`:
 ```bash
-yarn install -D import-sort-style-module-and-prefix
+yarn add -D import-sort-style-module-and-prefix
 ```
 
 In your `package.json` or `.importsortrc`, specify `module-and-prefix` as the `style` for file groups which you want to use this style.
