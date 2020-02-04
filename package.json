@@ -1,6 +1,6 @@
 {
   "name": "import-sort-style-module-and-prefix",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "main": "lib/index.js",
   "homepage": "https://github.com/import-sort-style-module-and-prefix",
   "bugs": "https://github.com/ronyclau/import-sort-style-module-and-prefix/issues",
@@ -8,6 +8,7 @@
     "url": "https://github.com/ronyclau/import-sort-style-module-and-prefix",
     "type": "git"
   },
+  "keywords": ["import-sort"],
   "author": "Ron Lau <ron@ronlau.hk>",
   "license": "MIT",
   "devDependencies": {

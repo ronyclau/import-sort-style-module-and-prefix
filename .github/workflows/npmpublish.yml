@@ -12,8 +12,12 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: 12
-      - uses: bahmutov/npm-install@v1.1.0
-      - run: npm run build
+      - run: yarn install --frozen-lockfile
+      - run: yarn build
+      - uses: actions/upload-artifact@v1.0.0
+        with:
+          name: lib
+          path: ./lib
 
   publish-npm:
     needs: build
@@ -25,7 +29,9 @@ jobs:
           node-version: 12
           registry-url: https://registry.npmjs.org/
           always-auth: true
-      - run: yarn install --frozen-lockfile
+      - uses: actions/download-artifact@v1.0.0
+        with:
+          name: lib
       - run: |-
           echo "//registry.npmjs.org/:_authToken=${NODE_AUTH_TOKEN}" > ~/.npmrc
           yarn publish
@@ -43,9 +49,9 @@ jobs:
           registry-url: https://npm.pkg.github.com/
           scope: '@ronyclau'
           always-auth: true
-      - run: yarn install --frozen-lockfile
-      - run: |-
-          echo "//npm.pkg.github.com/:_authToken=${NODE_AUTH_TOKEN}" > ~/.npmrc
-          yarn publish
+      - uses: actions/download-artifact@v1.0.0
+        with:
+          name: lib
+      - run: yarn publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
