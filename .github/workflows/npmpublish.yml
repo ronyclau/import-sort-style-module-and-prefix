@@ -23,8 +23,12 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: 12
+          registry-url: https://registry.npmjs.org/
+          always-auth: true
       - run: yarn install --frozen-lockfile
-      - run: yarn publish
+      - run: |-
+          echo "//registry.npmjs.org/:_authToken=${NODE_AUTH_TOKEN}" > ~/.npmrc
+          yarn publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.npm_token}}
 
@@ -38,7 +42,10 @@ jobs:
           node-version: 12
           registry-url: https://npm.pkg.github.com/
           scope: '@ronyclau'
+          always-auth: true
       - run: yarn install --frozen-lockfile
-      - run: yarn publish
+      - run: |-
+          echo "//npm.pkg.github.com/:_authToken=${NODE_AUTH_TOKEN}" > ~/.npmrc
+          yarn publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
