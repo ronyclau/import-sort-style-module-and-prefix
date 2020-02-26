@@ -100,12 +100,19 @@ export default function(styleApi: IStyleAPI): IStyleItem[] {
   const negativeMatcher = not(or(...matchers));
 
   const hasMemberStyleItems = matchers
-    .map(matcher => [{ match: matcher }, { separator: true }])
+    .map(matcher => [
+      { match: matcher, sort: [dotSegmentCount, moduleName(naturally)] },
+      { separator: true }
+    ])
     .reduce((acc, item) => [...acc, ...item], []);
 
   const noMemberStyleItems = hasMemberStyleItems.map(item =>
     item.match !== undefined
-      ? { ...item, match: and(hasNoMember, item.match) }
+      ? {
+          ...item,
+          sort: [moduleName(naturally)],
+          match: and(hasNoMember, item.match)
+        }
       : item
   );
 
