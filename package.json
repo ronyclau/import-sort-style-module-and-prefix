@@ -1,6 +1,6 @@
 {
   "name": "import-sort-style-module-and-prefix",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "main": "lib/index.js",
   "homepage": "https://github.com/ronyclau/import-sort-style-module-and-prefix#readme",
   "bugs": "https://github.com/ronyclau/import-sort-style-module-and-prefix/issues",
