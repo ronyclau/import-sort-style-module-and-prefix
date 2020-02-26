@@ -101,19 +101,24 @@ export default function(styleApi: IStyleAPI): IStyleItem[] {
 
   const hasMemberStyleItems = matchers
     .map(matcher => [
-      { match: matcher, sort: [dotSegmentCount, moduleName(naturally)] },
+      {
+        match: matcher,
+        sort: [dotSegmentCount, moduleName(naturally)],
+        sortNamedMembers: alias(unicode)
+      },
       { separator: true }
     ])
     .reduce((acc, item) => [...acc, ...item], []);
 
-  const noMemberStyleItems = hasMemberStyleItems.map(item =>
-    item.match !== undefined
-      ? {
-          ...item,
-          sort: [moduleName(naturally)],
-          match: and(hasNoMember, item.match)
-        }
-      : item
+  const noMemberStyleItems = hasMemberStyleItems.map(
+    ({ sortNamedMembers, ...item }) =>
+      item.match !== undefined
+        ? {
+            ...item,
+            sort: [moduleName(naturally)],
+            match: and(hasNoMember, item.match)
+          }
+        : item
   );
 
   const styleItems = [noMemberStyleItems, hasMemberStyleItems];
